@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/common :: [//head]" />
+    <body>
+        <div th:replace="fragments/menu"></div>
+        <div class="container">
+            <h1 th:text="#{customers}" />
+            <form th:action="@{#httpServletRequest.requestURI}" th:object="${customer}" method="post" class="form-horizontal" role="form">
+                <input type="hidden" th:field="*{id}"/>
+                <div class="form-group">
+                    <label for="name" th:text="#{name}" />
+                    <input id="name" type="text" th:field="*{name}" th:placeholder="#{name}"/>
+                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-arrow-circle-right fa-lg"></i> <span th:text="#{submit}" />
+                    </button>
+                    <a th:href="@{/customer}" class="btn btn-default" >
+                        <i class="fa fa-times"></i> <span th:text="#{close}" />
+                    </a>
+                </div>
+            </form>
+        </div>
+        <!--/* Footer */-->
+        <div th:replace="fragments/common :: [//div[@class='footer']]"></div>
+        <!--/* Scripts includes are placed at the end of the document so the pages load faster */-->
+        <div th:replace="fragments/common :: [//div[@id='scripts']]"></div>
+    </body>
+</html>

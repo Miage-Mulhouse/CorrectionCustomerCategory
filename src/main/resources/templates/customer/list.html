@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/common :: [//head]" />
+    <body>
+        <div th:replace="fragments/menu"></div>
+        <div class="container">
+            <h1 th:text="#{customers}" />
+            <a th:href="@{/customer/create}" th:text="#{createCustomer}" class="btn btn-success" />
+            <ul>
+                <li th:each="customer : ${customers}">
+                    <span th:text="${customer.name}"></span>
+                    <a th:href="@{/customer/edit(id=${customer.id})}"><i class="fa fa-pencil"></i></a>
+                    <a th:href="@{'/customer/delete/' + ${customer.id}}"><i class="fa fa-remove"></i></a>
+                </li>
+            </ul>
+        </div>
+        <!--/* Footer */-->
+        <div th:replace="fragments/common :: [//div[@class='footer']]"></div>
+        <!--/* Scripts includes are placed at the end of the document so the pages load faster */-->
+        <div th:replace="fragments/common :: [//div[@id='scripts']]"></div>	
+    </body>
+</html>

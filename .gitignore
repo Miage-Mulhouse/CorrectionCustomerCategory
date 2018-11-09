@@ -1,0 +1,12 @@
+target/
+.settings
+.classpath
+.project
+.metadata
+.recommenders
+*.iml
+**/target/
+*.aux
+*.log
+*.out
+*.gz

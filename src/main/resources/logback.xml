@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<property resource="applicationcustom.properties" />
+
+<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	<encoder>
+		<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+	</encoder>
+</appender>
+
+<logger name="org.thymeleaf" level="${logger.org.thymeleaf.level}" additivity="false">
+	<appender-ref ref="STDOUT" />
+</logger>
+
+<root level="${logger.rootLogger.level}">
+	<appender-ref ref="STDOUT" />
+</root>
+</configuration>
