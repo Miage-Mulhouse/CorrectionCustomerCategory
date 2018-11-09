@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -21,8 +20,7 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-    //@GetMapping({"","/"})
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping({"","/"})
     public String findAll(Model model) {
         model.addAttribute("customers", customerService.findAll());
         return "customer/list";

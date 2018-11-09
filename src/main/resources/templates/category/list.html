@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/common :: [//head]" />
+    <body>
+        <!-- V0.1 th:replace="..." est utilisé pour inclure un fragment, en 
+        l'occurrence un menu. Très utile si ce menu apparait dans différentes
+        pages. 
+        -->
+        <div th:replace="fragments/menu"></div>
+        <div class="container">
+            <!-- V0.1 Le titre peut être affiché dans différentes langues -->
+            <!-- V0.1 #{categories} fait référence à la clé "categories" dans
+                      le fichier "messages.properties"
+            -->
+            <h1 th:text="#{categories}" />
+            <!-- V0.1 Un bouton pour ouvrir la page de création de catégories -->
+            <a th:href="@{/category/create}" th:text="#{createCategory}" class="btn btn-success" />
+            <ul>
+            <!-- V0.1 La liste d'item des catégories est créée à l'aide de th:each -->
+            <!-- V0.1 qui parcourt les categories -->
+                <li th:each="category : ${categories}">
+                    <span th:text="${category.name}"></span>
+                    <a th:href="@{/category/edit(id=${category.id})}"><i class="fa fa-pencil"></i></a>
+                    <a th:href="@{'/category/delete/' + ${category.id}}"><i class="fa fa-remove"></i></a>
+                </li>
+            </ul>
+        </div>
+        <!--/* Footer */-->
+        <div th:replace="fragments/common :: [//div[@class='footer']]"></div>
+        <!--/* Scripts includes are placed at the end of the document so the pages load faster */-->
+        <div th:replace="fragments/common :: [//div[@id='scripts']]"></div>	
+    </body>
+</html>

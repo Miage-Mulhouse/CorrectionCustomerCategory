@@ -1,6 +1,8 @@
 package fr.miage;
 
+import fr.miage.core.entity.Category;
 import fr.miage.core.entity.Customer;
+import fr.miage.core.service.CategoryService;
 import fr.miage.core.service.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +18,9 @@ public class Demo implements CommandLineRunner {
 
     @Autowired
     private CustomerService customerService;
+    
+    @Autowired
+    private CategoryService categoryService;
 
     @Override
     @Transactional
@@ -33,6 +38,20 @@ public class Demo implements CommandLineRunner {
             c2 = new Customer("DECATHLON");
             customerService.save(c2);
             LOGGER.info("DECATHLON created");
+        }
+        
+        createCategory("A");
+        createCategory("B");
+        createCategory("Z");
+    }
+
+    private void createCategory(String name) {
+        
+        Category c = categoryService.findByName(name);
+        if (c == null) {
+            c = new Category(name);
+            categoryService.save(c);
+            LOGGER.info(name + " created");
         }
     }
 }

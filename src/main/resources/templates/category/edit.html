@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/common :: [//head]" />
+    <body>
+        <!-- V0.1 th:replace="..." est utilisé pour inclure un fragment, en 
+        l'occurrence un menu. Très utile si ce menu apparait dans différentes
+        pages. 
+        -->
+        <div th:replace="fragments/menu"></div>
+        <div class="container">
+            <!-- V0.1 Le titre peut être affiché dans différentes langues -->
+            <!-- V0.1 #{categories} fait référence à la clé "categories" dans
+                      le fichier "messages.properties"
+            -->
+            <h1 th:text="#{categories}" />
+            <!-- V0.1 
+            th:action="... précise l'url vers laquelle renvoit l'appui du 
+            bouton "submit". Comme ce fichier sert à la fois 
+            1. à la création (/category/create) et 
+            2. à l'édition (/category/edit)
+            Le formulaire fait un "retour à l'envoyeur". C'est-à-dire que si
+            on y vient depuis n'importe quelle URL par HTTP/GET, "submit" fait
+            la requête HTTP/POST sur cette même URL.
+            -->
+            <!-- V0.1 
+            th:object="${category}" indique que le formulaire manipule un objet
+            passer à travers le modèle dont la clé est "category"
+            
+            Dans le reste du formulaire, th:field="*{xxx}" fait référence au
+            champ xxx de cet objet.
+            -->
+            <form th:action="@{#httpServletRequest.requestURI}" th:object="${category}" method="post" class="form-horizontal" role="form">
+                
+                <!-- V0.1 Le formulaire sert à l'édition comme à la création.
+                Dans le cas de la création, le champ id n'est pas indispensable
+                Puisqu'il est nul et sera calculé automatiquement au moment de
+                l'enregistrement de la catégorie dans la BDD.
+                Mais pour l'édition, le champ id est déterminé à partir du nom
+                choisi dans le formulaire. Or, (bizarrement), s'il est pas 
+                traité par le formulaire, il sera renvoyé nul au "submit". 
+                Il faut donc y faire référence mais sans le montrer, d'où le
+                champ caché suivant.
+                -->
+                <input type="hidden" th:field="*{id}"/>
+                <div class="form-group">
+                    <label for="name" th:text="#{name}" />
+                    <!-- V0.1 Le champ "name" de l'objet "category" est 
+                    directement affecté par la saisie dans l'input suivant.
+                    -->
+                    <input id="name" type="text" th:field="*{name}" th:placeholder="#{name}"/>
+                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-arrow-circle-right fa-lg"></i> <span th:text="#{submit}" />
+                    </button>
+                    <a th:href="@{/category}" class="btn btn-default" >
+                        <i class="fa fa-times"></i> <span th:text="#{close}" />
+                    </a>
+                </div>
+            </form>
+        </div>
+        <!--/* Footer */-->
+        <div th:replace="fragments/common :: [//div[@class='footer']]"></div>
+        <!--/* Scripts includes are placed at the end of the document so the pages load faster */-->
+        <div th:replace="fragments/common :: [//div[@id='scripts']]"></div>
+    </body>
+</html>

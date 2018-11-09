@@ -1,18 +1,13 @@
 package fr.miage.core.entity;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
 @Entity
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"name"})})
+@Table(uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"name"})})
 public class Customer implements Serializable {
 
     @Id
@@ -48,6 +43,6 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        return name;
+            return name;
     }
 }
