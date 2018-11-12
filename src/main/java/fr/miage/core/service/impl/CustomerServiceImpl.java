@@ -26,8 +26,10 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    // #### V0.3 findAll() utilise findAllByOrderByName() si bien que maintenant
+    // #### V0.3 toute liste demandée sera ordonnée.
     public List<Customer> findAll() {
-        return (List<Customer>) customerRepository.findAll();
+        return (List<Customer>) customerRepository.findAllByOrderByName();
     }
 
     @Override

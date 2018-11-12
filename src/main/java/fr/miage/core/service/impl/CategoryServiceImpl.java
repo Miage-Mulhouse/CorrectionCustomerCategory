@@ -26,8 +26,10 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    // #### V0.3 findAll() utilise findAllByOrderByName() si bien que maintenant
+    // #### V0.3 toute liste demandée sera ordonnée.
     public List<Category> findAll() {
-        return (List<Category>) categoryRepository.findAll();
+        return (List<Category>) categoryRepository.findAllByOrderByName();
     }
 
     @Override
