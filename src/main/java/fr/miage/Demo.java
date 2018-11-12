@@ -39,6 +39,7 @@ public class Demo implements CommandLineRunner {
             customerService.save(c2);
             LOGGER.info("DECATHLON created");
         }
+    
         
         createCategory("A");
         createCategory("B");

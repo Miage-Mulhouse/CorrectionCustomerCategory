@@ -1,0 +1,20 @@
+<!-- V0.2 Fichier rajouté pour définir un menu de choix entre "clients" et
+"catégories".
+-->
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <!-- V0.2 
+                    Pour trouver quel bouton selectionner #strings.startsWith(#httpServletRequest.requestURI
+                    -->
+                    <a th:href="@{/customer}" th:text="#{customers}" th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/customer')} ? 'nav-link active' : 'nav-link'" />
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/category}" th:text="#{categories}" th:class="${#strings.startsWith(#httpServletRequest.requestURI, '/category')} ? 'nav-link active' : 'nav-link'" />
+                </li>
+            </ul>
+        </div>	
+    </div>
+</div>
