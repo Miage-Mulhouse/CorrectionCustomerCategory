@@ -10,7 +10,6 @@ public interface CategoryService {
     void delete(Long id);
     List<Category> findAll();
     Optional<Category> findById(Long id);
-    // V0.6 #### Ne pas oublier de faire le "passe-plat".
     Category findByName(String name);
     Category getOne(Long id);
 }

@@ -49,9 +49,15 @@ public class SpringCoreConfig {
     
     @Bean
     public DataSource dataSource() {
-        return new EmbeddedDatabaseBuilder()
-            .setType(EmbeddedDatabaseType.H2)
-            .build();
+        //return new EmbeddedDatabaseBuilder()
+        //    .setType(EmbeddedDatabaseType.H2)
+        //    .build();        
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
+        dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
+        dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
+        dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
+        return dataSource;
     }
     
     @Bean 

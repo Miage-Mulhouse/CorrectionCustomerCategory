@@ -4,13 +4,6 @@
     <body>
         <div th:replace="fragments/menu"></div>
         <div class="container">
-            <!-- V0.5 list.html est maintenant utilisée pour afficher la liste
-            des clients d'une catégorie donnée ou tous les clients.
-            Ca ne change pas grand chose à part pour le titre qui affiche soit
-               1. Clients
-               2. Clients de la catégorie <X>
-            Grâce à la ligne suivante :
-            -->
             <h1 th:text="#{customers}+' '+${categoryname==null?'':'de la catégorie '+categoryname}" />
             <a th:href="@{/customer/create}" th:text="#{createCustomer}" class="btn btn-success" />
             <ul>

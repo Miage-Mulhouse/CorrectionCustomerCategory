@@ -27,7 +27,7 @@ public class Demo implements CommandLineRunner {
     public void run(String... arg0) throws Exception {
 
         // Customers
-        Customer c1 = customerService.findByName("Fnac");
+        /*Customer c1 = customerService.findByName("Fnac");
         if (c1 == null) {
             c1 = new Customer("Fnac");
             customerService.save(c1);
@@ -43,7 +43,7 @@ public class Demo implements CommandLineRunner {
         
         createCategory("A");
         createCategory("B");
-        createCategory("Z");
+        createCategory("Z");*/
     }
 
     private void createCategory(String name) {

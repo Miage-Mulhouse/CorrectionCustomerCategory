@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.miage</groupId>
-    <artifactId>CustomerCategory-V0.6</artifactId>
+    <artifactId>CustomerCategory-V0.7</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <parent>
@@ -15,7 +15,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <jaxb.version>2.3.0</jaxb.version>
-        <project.name>CustomerCategory-V0.6</project.name>
+        <project.name>CustomerCategory-V0.7</project.name>
     </properties>
 
     <build>
