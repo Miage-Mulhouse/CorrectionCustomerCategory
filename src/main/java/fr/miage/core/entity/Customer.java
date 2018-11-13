@@ -17,15 +17,9 @@ public class Customer implements Serializable {
     @NotNull
     @Size(min = 2, max = 30)
     private String name;
-    
-    // #### V0.4 Un client appartient à 0 ou 1 catégorie.
-    // #### V0.4 Mais une catégorie peut-être partagée par 0, 1 ou plusieurs clients.
-    // #### V0.4 Pour établir cette relation avec JPA, il faut utiliser 
-    // #### V0.4 l'annotation ManyToOne
-    // #### V0.4 Cette table sera la table maître
+
     @ManyToOne
     private Category category;
-    
 
     public Customer() {
     }
@@ -51,8 +45,16 @@ public class Customer implements Serializable {
     }
 
     @Override
+    // V0.5 #### Une solution pour que la catégorie d'un client s'affiche 
+    // V0.5 #### (si elle existe) dans la liste affichée par l'url /categoy
+    // V0.5 #### est tout simplement de redéfinir toString à cet effet.
+    // V0.5 #### Cette méthode peut être utilisée dans les templates thymeleaf.
     public String toString() {
-            return name;
+        if (category == null) {
+            return String.format("%s", name);
+        } else {
+            return String.format("%s (%s)", name, category);
+        }
     }
 
     public Category getCategory() {
@@ -62,5 +64,5 @@ public class Customer implements Serializable {
     public void setCategory(Category category) {
         this.category = category;
     }
-    
+
 }

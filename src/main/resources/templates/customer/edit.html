@@ -5,26 +5,17 @@
         <div th:replace="fragments/menu"></div>
         <div class="container">
             <h1 th:text="#{customers}" />
-            <!-- V0.4 L'objet affecté par le formulaire est "customer" -->
             <form th:action="@{#httpServletRequest.requestURI}" th:object="${customer}" method="post" class="form-horizontal" role="form">
                 <input type="hidden" th:field="*{id}"/>
                 <div class="form-group">
                     <label for="name" th:text="#{name}" />
-                    <!-- V0.4 Le nom du client est modifiable, comme avant -->
                     <input id="name" type="text" th:field="*{name}" th:placeholder="#{name}"/>
                     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" />
                 </div>
                 <div class="form-group">
-                    <!-- V0.4 Mais le champ catégorie aussi peut-être modifié -->
-                    <!-- V0.4 par l'un des éléments de la boite à liste générée -->
-                    <!-- V0.4 dans la suite -->
                     <label for="categories" th:text="#{categories}" />
                     <select id="categories" type="text" th:field="*{category}" th:placeholder="#{name}">
-                        <!-- V0.4 null est une valeur possible, dans ce cas, le client n'a pas de catégorie -->
                         <option th:value="null" th:text="#{No category}" />
-                        <!-- V0.4 les autres catégories possibles sont dans la liste -->
-                        <!-- V0.4 ATTENTION, pour que ça marche, th:value="${category.id} -->
-                        <!-- V0.4 Ce n'est pas intuitif mais c'est comme ça. -->
                         <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"/> 
                     </select>
                 </div>

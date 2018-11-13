@@ -23,11 +23,11 @@ import org.slf4j.LoggerFactory;
 @RunWith(MockitoJUnitRunner.class)
 public class CustomerServiceTest {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(CustomerServiceTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomerServiceTest.class);
 
-	private static final String NAME = "Fnac";
+    private static final String NAME = "Fnac";
 
-	@InjectMocks
+    @InjectMocks
     CustomerService service = new CustomerServiceImpl();
 
     @Mock
@@ -40,21 +40,12 @@ public class CustomerServiceTest {
 
     @Test
     public void findAll_success() {
-        
-    	// Mock du repository
-    	// final List<Customer> all = Arrays.asList(new Customer(NAME));
-        // Mockito.when(mockCustomerRepository.findAll()).thenReturn(all);
 
-        // Test du service
-        // final List<Customer> expectedList = service.findAll();
-        
-        // assertNotNull(expectedList);
-        // assertEquals(expectedList.size(), 1);
-        
-        // final Customer expected = expectedList.get(0);
-        // assertEquals(expected.getName(), NAME);
-        
+        // Mock du repository
+
+
+
         LOGGER.info(">>>>> CustomerService findAll_success OK");
     }
-	
+
 }

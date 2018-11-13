@@ -8,7 +8,14 @@
             <a th:href="@{/customer/create}" th:text="#{createCustomer}" class="btn btn-success" />
             <ul>
                 <li th:each="customer : ${customers}">
-                    <span th:text="${customer.name}"></span>
+                    
+                    <!-- V0.5 Pour afficher un client et son éventuelle catégorie, 
+                    il n'y a en fait rien de particulier à faire. 
+                    Comme "customer" est un objet, th:text="${customer}"
+                    exploite sa méthode toString(). Il suffit de la redéfinir
+                    en conséquence.
+                    -->
+                    <span th:text="${customer}"></span>
                     <a th:href="@{/customer/edit(id=${customer.id})}"><i class="fa fa-pencil"></i></a>
                     <a th:href="@{'/customer/delete/' + ${customer.id}}"><i class="fa fa-remove"></i></a>
                 </li>

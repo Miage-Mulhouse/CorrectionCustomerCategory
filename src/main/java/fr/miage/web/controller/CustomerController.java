@@ -21,11 +21,7 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-    // V0.4 #### @Autowired fait l'injection. Il n'y a qu'une implémentation qui
-    // V0.4 #### convient. C'est CustomerServiceImpl. Elle est donc implémentée
-    // V0.4 #### automatiquement.
     @Autowired
-    // V0.4 #### Idem ici
     CategoryService categoryService;
 
     @GetMapping({"", "/"})
@@ -38,8 +34,6 @@ public class CustomerController {
     public String create(Model model) {
         Customer customer = new Customer();
         model.addAttribute("customer", customer);
-        // V0.4 #### Il faut envoyer toutes les catégories car on veut pouvoir
-        // V0.4 #### associer ce nouveau client à une des catégories existantes.
         model.addAttribute("categories", categoryService.findAll());
         return "customer/edit";
     }
@@ -64,8 +58,6 @@ public class CustomerController {
     @GetMapping("/edit")
     public String edit(@RequestParam(name = "id") Long id, Model model) {
         model.addAttribute("customer", customerService.findById(id).get());
-        // V0.4 #### Il faut envoyer toutes les catégories car on veut pouvoir
-        // V0.4 #### associer ce nouveau client à une des catégories existantes.
         model.addAttribute("categories", categoryService.findAll());
         return "customer/edit";
     }

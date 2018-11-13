@@ -56,7 +56,7 @@ public class CategoryController {
     }
 
     @PostMapping("/edit")
-    public String edited(@Valid Category category, BindingResult br) {
+    public String edited(@Valid Category category, BindingResult br, Model model) {
         if (br.hasErrors()) {
             return "category/edit";
         }
