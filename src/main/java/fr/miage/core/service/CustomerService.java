@@ -1,5 +1,6 @@
 package fr.miage.core.service;
 
+import fr.miage.core.entity.Category;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,4 +13,6 @@ public interface CustomerService {
     Optional<Customer> findById(Long id);
     Customer findByName(String name);
     Customer getOne(Long id);
+    // V0.6 #### Ne pas oublier de faire le "passe-plat".
+    List<Customer> findByCategory(Category category);
 }

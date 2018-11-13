@@ -1,5 +1,6 @@
 package fr.miage.core.service.impl;
 
+import fr.miage.core.entity.Category;
 import fr.miage.core.entity.Customer;
 import fr.miage.core.repository.CustomerRepository;
 import fr.miage.core.service.CustomerService;
@@ -43,6 +44,12 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer getOne(Long id) {
         return customerRepository.getOne(id);
+    }
+    
+    
+    @Override
+    public List<Customer> findByCategory(Category category) {
+        return customerRepository.findByCategory(category);
     }
 
 }

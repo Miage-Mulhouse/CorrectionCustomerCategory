@@ -45,10 +45,6 @@ public class Customer implements Serializable {
     }
 
     @Override
-    // V0.5 #### Une solution pour que la catégorie d'un client s'affiche 
-    // V0.5 #### (si elle existe) dans la liste affichée par l'url /categoy
-    // V0.5 #### est tout simplement de redéfinir toString à cet effet.
-    // V0.5 #### Cette méthode peut être utilisée dans les templates thymeleaf.
     public String toString() {
         if (category == null) {
             return String.format("%s", name);
